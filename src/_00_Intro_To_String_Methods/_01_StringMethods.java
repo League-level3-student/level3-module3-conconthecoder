@@ -65,14 +65,14 @@ public class _01_StringMethods {
         int sum = 0;
         char[] dog = s.toCharArray();
         for (char i: dog) {
-        	if (Character.isDigit(i)) sum += Integer.valueOf(i);
+        	if (Character.isDigit(i)) sum += Character.getNumericValue(i);
         }
     	return sum;
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+    	return s.split(substring, -1).length - 1;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
@@ -89,7 +89,10 @@ public class _01_StringMethods {
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+        String[] dog = s.split(" ");
+        int g = 0;
+    	for (String i: dog) if (i.endsWith(substring)) g++;
+    	return g;
     }
 
     // Given String s, return the number of characters between the first
@@ -103,7 +106,14 @@ public class _01_StringMethods {
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
-        return true;
+        s = s.toLowerCase();
+        s = s.replace(" ", "");
+        s = s.replaceAll("\\p{Punct}", "");
+    	char[] dog = s.toCharArray();
+    	for (int i = 0; i < dog.length; i++) {
+    		if (dog[i] != dog[dog.length-i-1]) return false;
+    	}
+    	return true;
     }
 }
 
