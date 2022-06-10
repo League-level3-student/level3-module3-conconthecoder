@@ -77,13 +77,16 @@ public class _01_StringMethods {
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+        byte[] g = s.getBytes();
+        byte w =  (byte) key;
+        return Utilities.encrypt(g, w);
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+        byte g = (byte) key;
+        return Utilities.decrypt(s, g);
     }
 
     // Return the number of words in String s that end with String substring
@@ -99,7 +102,14 @@ public class _01_StringMethods {
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
     public static int distance(String s, String substring) {
-        return 0;
+    	int g = 0;
+    	String[] dog = s.split(substring);
+    	for (int i = 1; i <dog.length-1;i++) {
+    		 if (dog[i].isEmpty()) g += substring.length();
+    		 else g += dog[i].length();
+    	}
+    	return g;
+    
     }
 
     // Return true if String s is a palindrome
