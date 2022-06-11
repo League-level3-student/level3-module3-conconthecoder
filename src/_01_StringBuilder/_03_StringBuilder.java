@@ -32,13 +32,23 @@ public class _03_StringBuilder {
     	int g = 0;
     	for (int i = 0; i < runny.length; i++) {
     		if (i > index) g = 1;
-    		if (i == index) runny[i] = newChar;
-    		runny[i] = doggie[i-1];
+    		if (i == index) {
+    			runny[i] = newChar;
+    			continue;
+    		}
+    		runny[i] = doggie[i-g];
     	}
         return String.copyValueOf(runny);
     }
     
     public static String delete(String str, int startIndex, int endIndex) {
-        return null;
+    	int len = endIndex - startIndex,g = 0, c = 0;
+    	char[] doggie = str.toCharArray();
+    	char[] ans = new char[doggie.length - len];
+    	for (int i = 0; i < ans.length; i++) {
+    		if (i == startIndex) g = len;	
+    		ans[i] = doggie[i+g];
+    	}
+        return String.copyValueOf(ans);
     }
 }

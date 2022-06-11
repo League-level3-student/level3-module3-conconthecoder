@@ -20,7 +20,19 @@ public class _01_TheWave {
      */
     
     public static ArrayList<String> wave(String str) {
-        
-        return null;
+    	
+        char[] dog = str.toCharArray();
+        char[] helper = new char[dog.length];
+        ArrayList<String> ans = new ArrayList<String>();
+        for (int i = 0; i < dog.length; i++) {
+        	if (Character.isWhitespace(dog[i])) continue;
+        	for (int j = 0; j < dog.length;j++) {
+        		if (j == i) helper[j] = Character.toUpperCase(dog[j]);
+        		else helper[j] = dog[j];
+        	}
+        	ans.add(String.valueOf(helper));
+        	
+        }
+        return ans;
     }
 }
